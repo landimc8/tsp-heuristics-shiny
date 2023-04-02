@@ -29,8 +29,7 @@ According to empirical findings thus far, an even class heuristic offers the bes
 Understanding the advantages and disadvantages of these algorithms can be improved by implementing the class c gluttonous strategies for TSP and evaluating their performance. The obtained findings can also serve as a guide when choosing the best heuristic for a particular TSP problem size and structure.
 
 # Authors
-Anouk Xabina Lhote 
-Imen Hassine
+Anouk Xabina Lhote /Imen Hassine
 Miguel Romero Montoya 
 Zildete Landim Crausaz
 
