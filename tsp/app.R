@@ -1,0 +1,145 @@
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+#
+
+library(shiny)
+
+ui <- fluidPage(
+  
+  titlePanel("Storybench’s drag-and-drop mapmaker"),
+  
+  sidebarLayout(
+    
+    sidebarPanel(
+      
+      fileInput("file1", "Choose your CSV File",
+                accept = c(
+                  "text/csv",
+                  "text/comma-separated-values,text/plain",
+                  ".csv")
+      ),
+      h6("*Make sure your CSV contains columns named 'lat' and 'lon' and a numerical column to size the dots", align = "left"),
+      tags$hr(),
+      textAreaInput("title", "Map title"), 
+      numericInput("titlesize", "Title font size:", value = 19, min = 12, max = 50),  
+      textAreaInput("family", "Choose font family name", "Arial"),  
+      hr(),
+      textAreaInput("color", "Choose dot color using hex code", "#1e90ff"),
+      radioButtons("radio", label = h5("Choose dot shape"), 
+                   choices = list("Circle" = 1, "Square" = 0, "Triangle" = 2, "Filled circle" = 16, "Filled square" = 15,"Filled triangle" = 17),
+                   selected = 16),
+      uiOutput("column"),
+      numericInput("low", "A minimum dot size:", value = 1, min = 0, max = 5),  
+      numericInput("high", "A maximum dot size:", value = 15, min = 5, max = 30),  
+      textAreaInput("legend", "Legend title"),
+      numericInput("legendsize", "Title font size:", value = 12, min = 12, max = 50),
+      hr(),
+      tags$div(class="header", checked=NA,
+               tags$p("Some datasets you might want to map"),
+               tags$a(href="https://raw.githubusercontent.com/aleszu/textanalysis-shiny/master/school-shootings-since-2015-wapo.csv", "School shootings since 2015 (Washington Post)")
+      ),
+      tags$br(),
+      hr(),
+      tags$div(class="header", checked=NA,
+               tags$p("Have a TXT file for sentiment analysis?"),
+               tags$a(href="https://storybench.shinyapps.io/textanalysis/", "Try the Storybench drag-and-drop TXT app.")),
+      hr(),
+      tags$div(class="header", checked=NA,
+               tags$p("Have a CSV file for sentiment analysis?"),
+               tags$a(href="https://storybench.shinyapps.io/csvanalysis/", "Try the Storybench drag-and-drop CSV app.")),
+      hr(),
+      tags$div(class="header", checked=NA,
+               tags$p("This analysis uses the R package 'fiftystater' and does not correctly transpose point data from Alaska or Hawaii. Yet. Created by Aleszu Bajak at Northeastern University's School of Journalism."))
+      #,
+      #    downloadButton("downloadPlot", "Save PNG")
+    ),
+    mainPanel(
+      plotOutput("stateMap"),
+      
+      h4("My data", align = "left"),
+      tableOutput("contents")
+    )
+    
+    
+  )
+)
+
+server <- function(input, output, session) {
+  
+  filedata <- reactive({
+    infile <- input$file1
+    if (is.null(infile)){
+      return(NULL)      
+    }
+    read.csv(infile$datapath)
+  })
+  
+  require(dplyr)
+  require(tidyverse)
+  require(ggplot2)
+  require(fiftystater)
+  
+  
+  output$column <- renderUI({
+    df <- filedata()
+    if (is.null(df)) return(NULL)
+    nums <- sapply(df, is.numeric) # keep only number columns
+    items=names(nums[nums]) # keep only number columns
+    names(items)=items
+    selectInput("bubble", "Choose column to map to dot size", items)
+  })
+  
+  output$color <- renderUI({
+    df <- filedata()
+    if (is.null(df)) return(NULL)
+    #  items=names(df) # add back in if you want all columns
+    nums <- sapply(df, is.numeric) # keep only number columns
+    items=names(nums[nums]) # keep only number columns
+    names(items)=items
+    selectInput("color", "Choose column for color",items)
+  })
+  
+  output$contents = renderTable({
+    df <- filedata()
+    return(df)
+  })
+  
+  
+  output$stateMap <- renderPlot({
+    
+    df <- filedata()
+    #df_subset <- subset(df, input$bubble > 0) # subsetting not working
+    
+    p3 <- ggplot() + geom_polygon(data=fifty_states, aes(x=long, y=lat, group = group),color="white", fill= "grey92") +
+      geom_point(data = df, aes_string(x=df$lon, y=df$lat, size=input$bubble), color = input$color, shape = as.numeric(input$radio)) +
+      scale_size(name="", range = c(input$low, input$high)) +
+      ggtitle(input$title) + 
+      guides(size=guide_legend(input$legend)) +
+      theme_void() +
+      theme(aspect.ratio=1.62/3, 
+            plot.title = element_text(size = input$titlesize),
+            legend.title=element_text(size= input$legendsize),
+            text=element_text(family=input$family))
+    p3
+    
+  })
+  
+  output$downloadPlot <- downloadHandler(
+    filename = function() {paste('map-', Sys.Date(), '.png', sep='')},
+    content = function(file) { 
+      png(file, type='cairo')
+      ggsave("storybench-mapmaker.png", width=14.4,height=7.43,units="in")
+    },
+    contentType = 'image/png'
+  )
+  
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+
