@@ -2,7 +2,7 @@
 
 This study compares the effectiveness of various heuristics for the Traveling Salesman Problem solution. (TSP). The gluttonous heuristic is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
 
-#Background
+# Background
 
 The TSP comprises finding the shortest path that only makes one pass through each of the n points. From logistics and transit to circuit design and DNA sequencing, this issue is pertinent in many different fields. In reality, heuristic algorithms are frequently used to handle this issue because exact solutions can be extremely computationally expensive.
 By selecting the option that optimizes the current value of the objective function at each stage, the gluttonous heuristic constructs a solution step by step. This type of heuristic is used in the nearest neighbor algorithm, where the non-visited city closest to the traveler's present location is selected as the next step. However, this algorithm has myopia, which means it could become stuck in a less-than-ideal answer.
