@@ -1,0 +1,27 @@
+---
+title: "Shiny Traveling Salesman Problem (TSP) - Heuristics Comparasion Project"
+author: "Anouk Xabina Lhote, Imen Hassine, Miguel Romero Montoya and Zildete Landim Crausaz"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  pdf_document:
+    toc: yes
+    fig_width: 6
+    fig_height: 3
+    fig_caption: yes
+    df_print: kable
+    highlight: tango
+biblio-style: apalike
+link-citations: yes
+editor: visual
+subtitle: Introduction to Data Science ('S230023')
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Heuristic class 1
+
