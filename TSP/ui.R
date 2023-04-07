@@ -1,11 +1,22 @@
 
-# Define UI
+# Define UI for app that draws a map with airplanes and selectable cities
 ui <- fluidPage(
-  titlePanel("Pin a Location on the Map"),
-  leafletOutput("map"),
-  selectInput("location", "Select a Location:",
-              c("USA", "Canada", "Mexico", "Brazil", "Argentina",
-                "UK", "France", "Germany", "Italy", "Spain",
-                "China", "Japan", "India", "Australia", "New Zealand",
-                "Tokyo", "New York", "London", "Paris", "Berlin"))
+  
+  # App title
+  titlePanel("Airplanes and Cities Map"),
+  
+  # Sidebar with city selection
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("cities", "Select Cities:",
+                  choices = c("Mountain View, CA", "Paris, France", "London, UK", "New York, NY"),
+                  selected = c("Mountain View, CA", "Paris, France"),
+                  multiple = TRUE)
+    ),
+    
+    # Main panel with leaflet map
+    mainPanel(
+      leafletOutput("map")
+    )
+  )
 )
