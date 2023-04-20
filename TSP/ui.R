@@ -1,22 +1,40 @@
 
-# Define UI for app that draws a map with airplanes and selectable cities
+# Define UI
+
+library(shiny)
+library(leaflet)
+
+#Define UI
 ui <- fluidPage(
+  titlePanel("Pin a Location on the Map"),
   
-  # App title
-  titlePanel("Airplanes and Cities Map"),
+  tags$head(
+    tags$link(rel = "stylesheet", href =
+                "https://cdn.jsdelivr.net/gh/Leaflet/Leaflet.label/dist/leaflet.label.css"),
+    tags$script(src =
+                  "https://cdn.jsdelivr.net/gh/Leaflet/Leaflet.label/dist/leaflet.label.js")
+  ),
   
-  # Sidebar with city selection
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("cities", "Select Cities:",
-                  choices = c("Mountain View, CA", "Paris, France", "London, UK", "New York, NY"),
-                  selected = c("Mountain View, CA", "Paris, France"),
-                  multiple = TRUE)
-    ),
-    
-    # Main panel with leaflet map
-    mainPanel(
-      leafletOutput("map")
-    )
-  )
+  #using Javascript to geolocate the user
+  
+  tags$script('
+              $(document).on("shiny:connected", function() {
+              navigator.geolocation.getCurrentPosition(function(position) {
+              Shiny.onInputChange("userLocation", [position.coords.latitude, position.coords.longitude]);
+              });
+            });
+          '),
+  
+  leafletOutput("map"),
+  selectInput("location", "Select a Location:",
+              c("USA", "Canada", "Mexico", "Brazil", "Argentina",
+                "UK", "France", "Germany", "Italy", "Spain",
+                "China", "Japan", "India", "Australia", "New Zealand",
+                "Tokyo", "New York", "London", "Paris", "Berlin"),
+              multiple = TRUE),
+  actionButton("goButto", "Find Best Route"),
+  textOutput("calculating"),
+  textOutput("route"),
+  
+  verbatimTextOutput("error")
 )
