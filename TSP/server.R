@@ -171,21 +171,38 @@ server <- function(input, output){
     grapho <- graph_from_adjacency_matrix(dist_matrix, mode =  "undirected", weighted = TRUE)
     
     
-    # Calculate the shortest route between the user location  and the last selected location
+    library(TSP)
     
-    tour <- shortest_paths(grapho, from = 1, to = n)$vpath[[1]]
-    print(tour) # Check if the shortest route is being calculated correctly
+    # Create a TSP from the distance matrix
+    tsp <- TSP(dist_matrix)
+    
+    #solve the TSP using the nearest neighbor algorithm
+    tour <- solve_TSP(tsp, metho = "nearest_insertion")
+    
+    #Get the coordinates of the points in the tour
+    lngs <- sapply(tour, function(i) coordinates[[i]][2])
+    lats <- sapply(tour, function(i) coordinates[[i]][1])
+    
+    
+    #Add the coordinates of the first point to the end of the vectors
+    lngs <- c(lngs, lngs[1])
+    lats <- c(lats, lats[1])
+    
+    # Draw the tour on the map
+    leafletProxy("map") %>%
+      addPolylines(lng = lngs,
+                   lat = lats,
+                   color = "red")
     
     #Show messages
     output$route <- renderText({
       req(tour)
-      paste("The shorter route is : ", paste(c("Yosur Location", locations)[tour], collapse = "  =>  "))
+      paste("The shorter route is : ", paste(c("Yours Location", locations)[tour], collapse = "  =>  "))
     })
     
     
     
     #Add markers to the start and the end of points
-    
     leafletProxy("map") %>%
       addCircleMarkers(lng = coordinates[[tour[1]]][2], lat = coordinates[[tour[1]]][1],
                        label = paste("Start:", locations[tour[1]])) %>%
@@ -194,26 +211,9 @@ server <- function(input, output){
                        label = paste("End:", locations[tour[length(tour)]]))
     
     
-    #show the path on the map
     
-    lngs <- c()
-    lats <- c()
-    
-    for(i in 1:length(tour)) {
-      
-      lngs[i] <- coordinates[[tour[i]]][2]
-      lats[i] <- coordinates[[tour[i]]][1]
-      
-      print(lngs)
-      print(lats)
-      print(tour)
-      
-    }
-    
-    leafletProxy("map") %>%
-      addPolylines(lng = lngs,
-                   lat = lats,
-                   color = "red")
     
   })
 }
+
+
