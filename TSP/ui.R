@@ -1,5 +1,5 @@
 
-# Le script du Shiny Project 2023 -----------------------------------------------------------------
+# Script Shiny Project 2023 -----------------------------------------------------------------
 
 library(shiny)
 library(shinyMatrix)
@@ -17,7 +17,7 @@ cities_countries<- long_lat_cities_arr %>%
 
 ui <- fluidPage(
   
-  headerPanel("The traveling salesman problem"),
+  headerPanel("Travelling Salesman Problem (TSP)"),
   headerPanel("Part I: Decision support"),
   
   sidebarPanel(
