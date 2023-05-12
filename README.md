@@ -1,8 +1,8 @@
-# Traveling Salesman Problem (TSP) - Heuristics Comparison Project
+# Travelling Salesman Problem (TSP) - Heuristics Comparison Project
 
 Visit the app at  https://tsp-heuristics.shinyapps.io/tsp-heuristics/
 
-This study compares the effectiveness of various heuristics for the Traveling Salesman Problem solution. (TSP). The greedy heuristic is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
+This study compares the effectiveness of various heuristics for the Travelling Salesman Problem solution. (TSP). The greedy heuristic is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
 
 # Background
 
