@@ -7,6 +7,7 @@ library(htmltools)
 library(dplyr)
 library(leaflet)
 library(geosphere)
+library(shinythemes)
 
 long_lat_cities <- vroom::vroom("~/Documents/GitHub/tsp-heuristics-shiny/worldcities.csv", col_types = list())
 long_lat_cities_arr<- long_lat_cities %>%
@@ -15,7 +16,7 @@ long_lat_cities_arr<- long_lat_cities %>%
 cities_countries<- long_lat_cities_arr %>%
   select(city,admin_name, country)
 
-ui <- fluidPage(
+ui <- fluidPage(theme = shinytheme("cerulean"),
   
   headerPanel("Travelling Salesman Problem (TSP)"),
   headerPanel("Part I: Decision support"),
