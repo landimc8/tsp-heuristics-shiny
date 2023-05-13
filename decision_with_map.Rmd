@@ -21,7 +21,7 @@ decision_with_map <- function(towns_list, seed_value =1240) {
   
   numb <- length(towns_list)
   
-  long_lat_cities <- read.csv("~/Statistical Modeling 22/travail/worldcities.csv")
+  long_lat_cities <- read.csv("~/Documents/GitHub/tsp-heuristics-shiny/worldcities.csv")
   head(long_lat_cities)
   
   long_lat_cities <- as.matrix(long_lat_cities)
