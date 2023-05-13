@@ -1,0 +1,13 @@
+name: TSP_heuris
+title: TSP_heuris
+username:
+account: tsp-heuristics
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9101427
+bundleId: 7213585
+url: https://tsp-heuristics.shinyapps.io/TSP_heuris/
+when: 1683983521.85029
+lastSyncTime: 1683983521.85031
+asMultiple: FALSE
+asStatic: FALSE
