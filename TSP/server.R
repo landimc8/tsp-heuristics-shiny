@@ -47,8 +47,42 @@ server <- function(input, output, session) {
   output$perct41 <- renderTable(resmat_41(), rownames = TRUE, colnames = TRUE)
   output$perct32 <- renderTable(resmat_32(), rownames = TRUE, colnames = TRUE)
   
+  output$inter_parity1_g <- renderText(c(resrch()[[17]]))
+  output$inter_parity2_g <- renderText(c(resrch()[[18]]))
+  
+  output$inter_parity1_21 <- renderText(c(resrch()[[19]]))
+  output$inter_parity2_21 <- renderText(c(resrch()[[20]]))
+  
+  output$inter_parity1_43 <- renderText(c(resrch()[[21]]))
+  output$inter_parity2_43 <- renderText(c(resrch()[[22]]))
+  
+  output$inter_parity1_41 <- renderText(c(resrch()[[23]]))
+  output$inter_parity2_41 <- renderText(c(resrch()[[24]]))
+  
+  output$inter_parity1_32 <- renderText(c(resrch()[[25]]))
+  output$inter_parity2_32 <- renderText(c(resrch()[[26]]))
+  
+  output$inter_myopia1_31 <- renderText(c(resrch()[[27]]))
+  output$inter_myopia2_31 <- renderText(c(resrch()[[28]]))
+  
+  output$inter_myopia1_42 <- renderText(c(resrch()[[29]]))
+  output$inter_myopia2_42 <- renderText(c(resrch()[[30]]))
+  
+  output$inter_myopia1_mg <- renderText(c(resrch()[[31]]))
+  output$inter_myopia2_mg <- renderText(c(resrch()[[32]]))
+  
+  output$inter_parity_1 <- renderText(c(resrch()[[33]]))
+  output$inter_parity_2 <- renderText(c(resrch()[[34]]))
+  output$inter_parity_3 <- renderText(c(resrch()[[38]]))
+  output$inter_myopia_1 <- renderText(c(resrch()[[35]]))
+  output$inter_myopia_2 <- renderText(c(resrch()[[36]]))
+  output$inter_myopia_3 <- renderText(c(resrch()[[37]]))
+  
+  
   output$perctm <- renderTable(resmat_m(), rownames = TRUE, colnames = TRUE)
   output$perct31 <- renderTable(resmat_31(), rownames = TRUE, colnames = TRUE)
   output$perct42 <- renderTable(resmat_42(), rownames = TRUE, colnames = TRUE)
+  output$inter_myopia <- renderPrint(interpret)
   
 }
+
