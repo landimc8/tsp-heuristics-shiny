@@ -15,8 +15,8 @@ This study compares the effectiveness of various heuristics for the Travelling S
 
 <div align="center">
 
-<a href="https://ibb.co/gMm5dWn"><img src="https://i.ibb.co/fYqh9Nc/Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project.png" alt="Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project" border="0"></a>
-
+[![Travelling-Salesm-enlarged.png](https://i.postimg.cc/MT64Zws7/Travelling-Salesm-enlarged.png)](https://postimg.cc/QBzSS2ZC)
+  
 </div>
 
 <br>
@@ -40,13 +40,9 @@ Before proceeding, ensure that you have the following:
 
 <br>
 
-- library(shiny)
-- library(shinyMatrix)
-- library(htmltools)
-- library(dplyr)
-- library(leaflet)
-- library(geosphere)
-- library(shinythemes)
+- Package 1
+- Package 2
+- Package 3
 
 <br>
 
