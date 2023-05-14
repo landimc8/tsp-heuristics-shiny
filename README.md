@@ -11,6 +11,13 @@ This study compares the effectiveness of various heuristics for the Travelling S
   <a href="https://tsp-heuristics.shinyapps.io/tsp-heuristics/">![Demo](https://img.shields.io/badge/App-Demo-indigo)</a>
 </div>
 
+<br>
+
+![image](https://github.com/rohankishore/zildetelandim/assets/109947257/ddb72a09-7988-4ce5-8d44-64df28ebde25)
+
+<br>
+<br>
+
 
 <h1 align="center">Installation ⬇️</h1>
 
@@ -105,7 +112,7 @@ Implementing the class c greedy strategies for TSP and evaluating their performa
 
 <br>
 
-<h1 align="center">Authors :woman_tone1: </h1>
+<h1 align="center">Authors 👨🏼👧🏼</h1>
 
 <br>
 
