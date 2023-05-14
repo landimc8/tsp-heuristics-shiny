@@ -105,7 +105,7 @@ Implementing the class c greedy strategies for TSP and evaluating their performa
 
 <br>
 
-<h1 align="center">Authors 👨🏼👧🏼`&#x1F467;` &#x1F468;` </h1>
+<h1 align="center">Authors 👨🏼👧🏼`&#x1F467;`Apple;` </h1>
 
 <br>
 
