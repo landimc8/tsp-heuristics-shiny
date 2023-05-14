@@ -15,8 +15,8 @@ This study compares the effectiveness of various heuristics for the Travelling S
 
 <div align="center">
 
-[![Travelling-Salesm-enlarged.png](https://i.postimg.cc/MT64Zws7/Travelling-Salesm-enlarged.png)](https://postimg.cc/QBzSS2ZC)
-  
+<a href="https://ibb.co/gMm5dWn"><img src="https://i.ibb.co/fYqh9Nc/Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project.png" alt="Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project" border="0"></a>
+
 </div>
 
 <br>
