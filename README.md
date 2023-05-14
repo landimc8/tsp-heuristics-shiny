@@ -1,4 +1,4 @@
-<h1 align="center">Travelling Salesman Problem (TSP) - Heuristics Comparison Project</h1>
+<h1 align="center">Travelling Salesman Problem (TSP) - Heuristics Comparison Project ✈️🧳🧭🗺️</h1>
 
 This study compares the effectiveness of various heuristics for the Travelling Salesman Problem solution. (TSP). The greedy heuristic is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
 
@@ -13,7 +13,11 @@ This study compares the effectiveness of various heuristics for the Travelling S
 
 <br>
 
-![image](https://github.com/rohankishore/zildetelandim/assets/109947257/ddb72a09-7988-4ce5-8d44-64df28ebde25)
+<div align="center">
+
+<a href="https://ibb.co/gMm5dWn"><img src="https://i.ibb.co/fYqh9Nc/Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project.png" alt="Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project" border="0"></a>
+
+</div>
 
 <br>
 <br>
@@ -36,13 +40,10 @@ Before proceeding, ensure that you have the following:
 
 <br>
 
-- library(shiny)
-- library(shinyMatrix)
-- library(htmltools)
-- library(dplyr)
-- library(leaflet)
-- library(geosphere)
-- library(shinythemes)
+- Package 1
+- Package 2
+- Package 3
+
 <br>
 
 Please make sure to install the required packages before running the Shiny app.
@@ -115,7 +116,7 @@ Implementing the class c greedy strategies for TSP and evaluating their performa
 
 <br>
 
-<h1 align="center">Authors 👨🏼👧🏼</h1>
+<h1 align="center">Authors 👩🏻👩🏼👨🏽👩🏻</h1>
 
 <br>
 
