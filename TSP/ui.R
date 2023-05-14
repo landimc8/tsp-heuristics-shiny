@@ -17,8 +17,8 @@ cities_countries<- long_lat_cities_arr %>%
 
 ui <- fluidPage(theme = shinytheme("cerulean"),
   
-  headerPanel("The traveling salesman problem"),
-  headerPanel("Part I: Decision support"),
+  headerPanel("The Traveling Salesman Problem"),
+  headerPanel("Part I: Decision Support"),
   
   sidebarPanel(
     selectInput("citychoices", "Alternative 1: Choice of cities to visit",
@@ -41,19 +41,19 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
   ),
   
   mainPanel(
-    h3("Alternative 1 solution"),
+    h3("Alternative 1 Solution"),
     tabsetPanel(
       tabPanel("The illustrative map for alternative 1", leafletOutput("map_journey")),
       tabPanel("Optimal Journey for alternative 1", verbatimTextOutput("Optimal_Journey_1")),
       tabPanel("Minimal distance for alternative 1", verbatimTextOutput("min_dist_1")),
     ),
-    h3("Alternative 2 solution"),
+    h3("Alternative 2 Solution"),
     tabsetPanel(
       tabPanel("Optimal Journey for alternative 2", verbatimTextOutput("Optimal_Journey_2")),
       tabPanel("Minimal distance for alternative 2", verbatimTextOutput("min_dist_2")),
     )
   ),
-  headerPanel("Part II: Research assistance"),
+  headerPanel("Part II: Research Assistance"),
   sidebarPanel(
     matrixInput("sparam","Simulation law parameters",
                 matrix(c(6,5,1,4,9,0.69, 0.43,0.17,5,5,4,17,47,121),
@@ -67,7 +67,7 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
   ),
   
   mainPanel(
-    h3("Joint effects of parity and myopia"),
+    h3("Joint Effects of Parity and Myopia"),
     tabsetPanel(
       tabPanel("Even classes versus odd classes", tableOutput("perct"),
                textOutput("inter_parity1_g"),
@@ -90,7 +90,7 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                textOutput("inter_parity_3")),
     ),
     
-    h3("Pure effects of myopia"),
+    h3("Pure Effects of Myopia"),
     tabsetPanel(
       tabPanel("Classe 4 and 3 versus classe 1 and 2",
                tableOutput("perctm"),
