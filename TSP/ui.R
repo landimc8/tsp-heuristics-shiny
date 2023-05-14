@@ -1,5 +1,4 @@
-
-# Script Shiny Project 2023 -----------------------------------------------------------------
+# Le script du Shiny Project 2023 -----------------------------------------------------------------
 
 library(shiny)
 library(shinyMatrix)
@@ -18,7 +17,7 @@ cities_countries<- long_lat_cities_arr %>%
 
 ui <- fluidPage(theme = shinytheme("cerulean"),
   
-  headerPanel("Travelling Salesman Problem (TSP)"),
+  headerPanel("The traveling salesman problem"),
   headerPanel("Part I: Decision support"),
   
   sidebarPanel(
@@ -38,7 +37,7 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                          2,7,1,2,6,7,2,2,7),nrow=15,ncol=15,byrow = FALSE),
                 class="numeric", rows = list(names = FALSE), cols = list(names = FALSE)),
     numericInput("n_t","Number of towns to visit :", 12),
-    actionButton("Execute", "Let's optimize the distance", icon = icon("thumbs-up"))
+    #  actionButton("Execute", "Let's optimize the distance", icon = icon("thumbs-up"))
   ),
   
   mainPanel(
@@ -70,18 +69,43 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
   mainPanel(
     h3("Joint effects of parity and myopia"),
     tabsetPanel(
-      tabPanel("Even classes versus odd classes", tableOutput("perct")),
-      tabPanel("Class 2 versus class 1", tableOutput("perct21")),
-      tabPanel("Class 4 versus class 3", tableOutput("perct43")),
-      tabPanel("Class 4 versus class 1", tableOutput("perct41")),
-      tabPanel("Class 3 versus class 2", tableOutput("perct32")),
+      tabPanel("Even classes versus odd classes", tableOutput("perct"),
+               textOutput("inter_parity1_g"),
+               textOutput("inter_parity2_g")),
+      tabPanel("Class 2 versus class 1", tableOutput("perct21"),
+               textOutput("inter_parity1_21"),
+               textOutput("inter_parity2_21")),
+      tabPanel("Class 4 versus class 3", tableOutput("perct43"),
+               textOutput("inter_parity1_43"),
+               textOutput("inter_parity2_43")),
+      tabPanel("Class 4 versus class 1", tableOutput("perct41"),
+               textOutput("inter_parity1_41"),
+               textOutput("inter_parity2_41")),
+      tabPanel("Class 3 versus class 2", tableOutput("perct32"),
+               textOutput("inter_parity1_32"),
+               textOutput("inter_parity2_32")),
+      tabPanel("Interpretations of parity tests",
+               textOutput("inter_parity_1"),
+               textOutput("inter_parity_2"),
+               textOutput("inter_parity_3")),
     ),
     
     h3("Pure effects of myopia"),
     tabsetPanel(
-      tabPanel("Classe 4 and 3 versus classe 1 and 2", tableOutput("perctm")),
-      tabPanel("Class 3 versus class 1", tableOutput("perct31")),
-      tabPanel("Class 4 versus class 2", tableOutput("perct42")),
+      tabPanel("Classe 4 and 3 versus classe 1 and 2",
+               tableOutput("perctm"),
+               textOutput("inter_myopia1_mg"),
+               textOutput("inter_myopia2_mg")),
+      tabPanel("Class 3 versus class 1", tableOutput("perct31"),
+               textOutput("inter_myopia1_31"),
+               textOutput("inter_myopia2_31")),
+      tabPanel("Class 4 versus class 2", tableOutput("perct42"),
+               textOutput("inter_myopia1_42"),
+               textOutput("inter_myopia2_42")),
+      tabPanel("Interpretations of myopia tests",
+               textOutput("inter_myopia_1"),
+               textOutput("inter_myopia_2"),
+               textOutput("inter_myopia_3")),
     )
   )
 )
