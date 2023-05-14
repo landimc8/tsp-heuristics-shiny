@@ -172,6 +172,4 @@ return(list(DistMin, chempath, Dst))
 }
 ```
 
-
-<
->=
+\< \>=
