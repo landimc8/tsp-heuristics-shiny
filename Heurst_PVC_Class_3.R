@@ -1,4 +1,10 @@
 
+
+# TITRE: COMPARAISON DE VARIANTES DE L'HEURISTIQUE GLOUTON POUR LE PVC. SCRIPT DE L'HEURISTIQUE DE CLASSE 3
+
+
+Mat_default=matrix(c(0,1,2,3,4,5,1,0,6,7,8,9,2,6,0,10,11,12,3,7,10,0,13,14,4,8,11,13,0,15,5,9,12,14,15,0),nrow=6, ncol=6, byrow = TRUE)
+
 heurst_pvc_class_3 <- function (n=100, sim=2, param1=0, param2=3, seed=1240, Matchoice=Mat_default){
   
   set.seed(seed)
@@ -174,4 +180,3 @@ heurst_pvc_class_3 <- function (n=100, sim=2, param1=0, param2=3, seed=1240, Mat
   }
   return(list(DistMin, chempath, Dst))
 }
-
