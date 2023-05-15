@@ -14,8 +14,8 @@ This study compares the effectiveness of various heuristics for the Travelling S
 <br>
 
 <div align="center">
-
-[![Travelling-Salesm-enlarged.png](https://i.postimg.cc/MT64Zws7/Travelling-Salesm-enlarged.png)](https://postimg.cc/QBzSS2ZC)
+    
+[![image.png](https://i.postimg.cc/LsQ5gT8X/image.png)](https://postimg.cc/WDrTQ0rL)
   
 </div>
 
@@ -164,3 +164,4 @@ Zildete Landim Crausaz
   <br>
   
 </div>
+
