@@ -1,31 +1,6 @@
----
-title: "Travelling Salesman Problem (TSP) - Heuristics Comparaison Project"
-author: "Anouk Xabina Lhote, Imen Hassine, Miguel Romero Montoya and Zildete Landim Crausaz"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    toc: yes
-    df_print: paged
-  pdf_document:
-    toc: yes
-    fig_width: 6
-    fig_height: 3
-    fig_caption: yes
-    df_print: kable
-    highlight: tango
-biblio-style: apalike
-link-citations: yes
-editor: visual
-subtitle: Introduction to Data Science ('S230023')
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+##COMPARAISON D'HEURISTIQUES: AIDE A LA RECHERCHE
 
-COMPARAISON D'HEURISTIQUES: AIDE A LA RECHERCHE
-
-```{r}
 # Create a function that compares the performance of heuristics 
 
 research <- function(m=8, h=0, seed_value=3333, sim_param=sim_param_default) {
@@ -344,8 +319,6 @@ if (p_value_m[2] < 0.05) {
 return(list(perct, perct_21, perct_43, perct_41, perct_32, perct_31, perct_42, perctm, p_value, p_value_21, p_value_43, p_value_41, p_value_32, p_value_31, p_value_42, p_value_m, message1_g, message2_g, message1_21, message2_21, message1_43, message2_43, message1_41, message2_41, message1_32, message2_32, message1_31, message2_31, message1_42, message2_42, message1_mg, message2_mg, message1_parity, message2_parity, message1_myopia, message2_myopia, message3_myopia, message3_parity))
 }
 
-```
 
-```{r}
 res=research(h=0, m=5, sim_param=sim_param_default)
-```
+
