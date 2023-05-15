@@ -26,11 +26,6 @@ knitr::opts_chunk$set(echo = TRUE)
 COMPARAISON D'HEURISTIQUES: AIDE A LA RECHERCHE
 
 ```{r}
-# Set default values for parameters of simulation laws
-sim_param_default <- matrix(c(7,7,1,4,10,0.85, 0.21,0.21,5,5,4,17,50,225), nrow=2, ncol=7, byrow=FALSE)
-rownames(sim_param_default) <- c("param_1", "param_2")
-colnames(sim_param_default) <- c("rpois", "runif", "rbinom", "rexp", "rchisq", "rf", "|rnorm|")
-
 # Create a function that compares the performance of heuristics 
 
 research <- function(m=8, h=0, seed_value=3333, sim_param=sim_param_default) {
@@ -348,12 +343,9 @@ if (p_value_m[2] < 0.05) {
 }
 return(list(perct, perct_21, perct_43, perct_41, perct_32, perct_31, perct_42, perctm, p_value, p_value_21, p_value_43, p_value_41, p_value_32, p_value_31, p_value_42, p_value_m, message1_g, message2_g, message1_21, message2_21, message1_43, message2_43, message1_41, message2_41, message1_32, message2_32, message1_31, message2_31, message1_42, message2_42, message1_mg, message2_mg, message1_parity, message2_parity, message1_myopia, message2_myopia, message3_myopia, message3_parity))
 }
-```
 
+```
 
 ```{r}
 res=research(h=0, m=5, sim_param=sim_param_default)
 ```
-
-
-
