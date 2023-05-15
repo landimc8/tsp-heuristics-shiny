@@ -15,8 +15,8 @@ This study compares the effectiveness of various heuristics for the Travelling S
 
 <div align="center">
 
-<a href="https://ibb.co/gMm5dWn"><img src="https://i.ibb.co/fYqh9Nc/Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project.png" alt="Travelling-Salesman-Problem-TSP-Heuristics-Comparison-Project" border="0"></a>
-
+[![Travelling-Salesm-enlarged.png](https://i.postimg.cc/MT64Zws7/Travelling-Salesm-enlarged.png)](https://postimg.cc/QBzSS2ZC)
+  
 </div>
 
 <br>
@@ -40,13 +40,9 @@ Before proceeding, ensure that you have the following:
 
 <br>
 
-- library(shiny)
-- library(shinyMatrix)
-- library(htmltools)
-- library(dplyr)
-- library(leaflet)
-- library(geosphere)
-- library(shinythemes)
+- Package 1
+- Package 2
+- Package 3
 
 <br>
 
@@ -86,9 +82,40 @@ To properly run the Shiny app, execute the scripts in the following order:
 2. Run the TSP.R script and wait for approximately 2 minutes.
 3. The Shiny app will progressively load and display a map, itinerary, and statistical tables for testing and comparing the heuristics used.
 
+# To install the package
+
+
+```
+library(devtools)
+
+install_github("wajahat16079/ZildePack")
+```
+
+<br>
+
+## To load the Package
+
+
+```library(Zilde)```
+
+<br>
+
+## To run the app
+
+
+```runMyApp()```
+
+<br>
+
+The Shiny app will progressively load and display a map, itinerary, and statistical tables for testing and comparing the heuristics used.
+
 ## Using the Shiny App
 
-Explore the map: Interact with the map to view different locations and routes. Itinerary: Check the generated itinerary for the selected route. Statistical Tables: Analyze the statistical information and comparisons between the various heuristics. Make any necessary selections or inputs within the app to customize your experience.
+- Explore the map: Interact with the map to view different locations and routes. 
+- Itinerary: Check the generated itinerary for the selected route. 
+- Statistical Tables: Analyze the statistical information and comparisons between the various heuristics. 
+- Make any necessary selections or inputs within the app to customize your experience.
+
 Please note that this guide assumes basic familiarity with R and RStudio. If you encounter any issues or have further questions, refer to the documentation for the Shiny package or consult the developer of the Shiny app for assistance.
 
 Enjoy using the Shiny app!
@@ -117,6 +144,7 @@ Based on empirical findings to date, it has been observed that an even class heu
 
 <h1 align="center">Conclusions ✋🏼</h1>
 Implementing the class c greedy strategies for TSP and evaluating their performance can enhance our understanding of the advantages and disadvantages of these algorithms. The findings obtained from such evaluations can serve as a valuable guide when selecting the most suitable heuristic for a given TSP problem, considering factors such as problem size and structure. This empirical analysis will contribute to making informed decisions regarding heuristic selection in TSP problem-solving scenarios.
+
 
 <br>
 
