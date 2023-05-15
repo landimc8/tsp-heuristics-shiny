@@ -37,21 +37,21 @@ df <- rbind(
 # Function that create a map centered on the start point
 
 function_cart_graph <- function(datf) {
-
-m <- leaflet(datf) %>%
-  addTiles() %>%
-  setView(lng = mean(as.numeric(datf[,2])), lat = mean(as.numeric(datf[,1])), zoom = 2)
-
-# Add markers for the start, end, and additional cities
-m <- m %>%
-  addCircleMarkers(data = datf, label = ~datf[,3])
-
-# Create lines between the start and end points and the additional cities
-m <- m %>%
-  addPolylines(lat = datf[,1], lng = datf[,2])
-
-# Print the map
-return(m)
+  
+  m <- leaflet(datf) %>%
+    addTiles() %>%
+    setView(lng = mean(as.numeric(datf[,2])), lat = mean(as.numeric(datf[,1])), zoom = 2)
+  
+  # Add markers for the start, end, and additional cities
+  m <- m %>%
+    addCircleMarkers(data = datf, label = ~datf[,3])
+  
+  # Create lines between the start and end points and the additional cities
+  m <- m %>%
+    addPolylines(lat = datf[,1], lng = datf[,2])
+  
+  # Print the map
+  return(m)
 }
 
 df
@@ -65,8 +65,8 @@ distance_mat <- matrix(0,11,11)
 ptsmat <- cbind(start[1:2], t(cities[, c("lon", "lat")]))
 
 for (i in 1:11) {
-distance_mat[i,] <- distHaversine(ptsmat[,i],t(ptsmat))
-
+  distance_mat[i,] <- distHaversine(ptsmat[,i],t(ptsmat))
+  
 }
 
 
