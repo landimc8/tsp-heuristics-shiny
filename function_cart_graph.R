@@ -6,7 +6,7 @@ library(geosphere)
 
 # Define the start and end points
 
-long_lat_cities=read.csv("~/Statistical Modeling 22/travail/worldcities.csv")
+long_lat_cities=read.csv("~/Documents/GitHub/tsp-heuristics-shiny/worldcities.csv")
 head(long_lat_cities)
 
 start <- c(40.7128, -74.0060) # New York City
