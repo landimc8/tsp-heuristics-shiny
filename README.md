@@ -40,13 +40,14 @@ Before proceeding, ensure that you have the following:
 
 <br>
 
-`library(shiny)`
-`library(shinyMatrix)`
-`library(htmltools)`
-`library(dplyr)`
-`library(leaflet)`
-`library(geosphere)`
-`library(shinythemes)
+- `library(shiny)`
+- `library(shinyMatrix)`
+- `library(htmltools)`
+- `library(dplyr)`
+- `library(leaflet)`
+- `library(geosphere)`
+- `library(shinythemes)`
+
 <br>
 
 Please make sure to install the required packages before running the Shiny app.
