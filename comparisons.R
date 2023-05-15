@@ -1,19 +1,16 @@
 
-# Create a function that compares the performance of heuristics
+### COMPARAISON D'HEURISTIQUES: AIDE A LA RECHERCHE
 
-#' Title
-#'
-#' @param m
-#' @param h
-#' @param seed_value
-#' @param sim_param
-#'
-#' @return
-#' @export
-#'
-#' @examples
+# Set default values for parameters of simulation laws
+
+sim_param_default <- matrix(c(7,7,1,4,10,0.85, 0.21,0.21,5,5,4,17,50,225), nrow=2, ncol=7, byrow=FALSE)
+rownames(sim_param_default) <- c("param_1", "param_2")
+colnames(sim_param_default) <- c("rpois", "runif", "rbinom", "rexp", "rchisq", "rf", "|rnorm|")
+
+# Create a function that compares the performance of heuristics 
+
 research <- function(m=8, h=0, seed_value=3333, sim_param=sim_param_default) {
-
+  
 ## Initialize the tables that will receive the analysis results
 
 perct=matrix(0,2,7)
@@ -69,7 +66,7 @@ if (s==6) {
 parm1 = sim_param[1,6]
 parm2 = sim_param[2,6]
 }
-
+  
 if (s==7) {
 parm1 = sim_param[1,7]
 parm2 = sim_param[2,7]
@@ -94,42 +91,42 @@ diffm2 = matrix(0,7,m-h)
 for (k in (h+3):(m+2)) {
 
   ## The context of even occurrences
-
+  
   result_1 = heurst_pvc_class_1(n=2*k, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_2 = heurst_pvc_class_2(n=2*k, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_3 = heurst_pvc_class_3(n=2*k, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_4 = heurst_pvc_class_4(n=2*k, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
-
+  
   odd_distmin[s,k-h-2] = min(result_1[[1]], result_3[[1]])
   even_distmin[s,k-h-2] = min(result_2[[1]], result_4[[1]])
   diff[s,k-h-2] = odd_distmin[s,k-h-2] - even_distmin[s,k-h-2]
-
+  
   distmin_34[s,k-h-2] = min(result_3[[1]], result_4[[1]])
   distmin_12[s,k-h-2] = min(result_1[[1]], result_2[[1]])
   diffm[s,k-h-2] = distmin_34[s,k-h-2] - distmin_12[s,k-h-2]
-
+  
   diff_21[s,k-h-2] = result_2[[1]]-result_1[[1]]
   diff_31[s,k-h-2] = result_3[[1]]-result_1[[1]]
   diff_41[s,k-h-2] = result_4[[1]]-result_1[[1]]
   diff_32[s,k-h-2] = result_3[[1]]-result_2[[1]]
   diff_42[s,k-h-2] = result_4[[1]]-result_2[[1]]
   diff_43[s,k-h-2] = result_4[[1]]-result_3[[1]]
-
+  
 ## The context of odd occurrences
-
+  
    result_5 = heurst_pvc_class_1(n=2*k+1, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_6 = heurst_pvc_class_2(n=2*k+1, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_7 = heurst_pvc_class_3(n=2*k+1, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
   result_8 = heurst_pvc_class_4(n=2*k+1, sim=s, param1=parm1, param2=parm2, seed=1240, Matchoice=Mat_default)
-
+  
   odd_distmin2[s,k-h-2] = min(result_5[[1]], result_7[[1]])
   even_distmin2[s,k-h-2] = min(result_6[[1]], result_8[[1]])
   diff2[s,k-h-2] = odd_distmin2[s,k-h-2] - even_distmin2[s,k-h-2]
-
+  
   distmin2_34[s,k-h-2] = min(result_7[[1]], result_8[[1]])
   distmin2_12[s,k-h-2] = min(result_5[[1]], result_6[[1]])
   diffm2[s,k-h-2] = distmin2_34[s,k-h-2] - distmin2_12[s,k-h-2]
-
+  
   diff2_21[s,k-h-2] = result_6[[1]]-result_5[[1]]
   diff2_31[s,k-h-2] = result_7[[1]]-result_5[[1]]
   diff2_41[s,k-h-2] = result_8[[1]]-result_5[[1]]
@@ -140,7 +137,7 @@ for (k in (h+3):(m+2)) {
 ## Joint effects of parity and myopia
 
 message1_parity <- print("The percentages indicated in the first line of the tables are those for which the heuristic of even class prevails over the heuristic of odd class. The tables affected are: perct, perct_21, perct_43, perct_41, perct_32.
-
+                         
 The percentages indicated in the second line of the tables are those for which the heuristic of odd class prevails over the heuristic of even class. The tables affected are: perct, perct_21, perct_43, perct_41, perct_32.")
 
 message2_parity <- print("In particular, the perct table compares the best of the even class 4 and 2 heuristics and the best of the odd class 1 and 3 heuristics.")
@@ -328,5 +325,8 @@ if (p_value_m[2] < 0.05) {
 return(list(perct, perct_21, perct_43, perct_41, perct_32, perct_31, perct_42, perctm, p_value, p_value_21, p_value_43, p_value_41, p_value_32, p_value_31, p_value_42, p_value_m, message1_g, message2_g, message1_21, message2_21, message1_43, message2_43, message1_41, message2_41, message1_32, message2_32, message1_31, message2_31, message1_42, message2_42, message1_mg, message2_mg, message1_parity, message2_parity, message1_myopia, message2_myopia, message3_myopia, message3_parity))
 }
 
+
+
+res=research(h=0, m=5, sim_param=sim_param_default)
 
 
