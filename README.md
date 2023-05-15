@@ -115,15 +115,16 @@ A map, itinerary, and statistics tables will be gradually loaded and displayed i
 
 ## Using the Shiny App
 
-●	Explore the map: Interact with the map to view different locations and routes.
+-	Explore the map: Interact with the map to view different locations and routes.
 
-●	Itinerary: Check the generated itinerary for the selected route.
+-	Itinerary: Check the generated itinerary for the selected route.
 
-●	Statistical Tables: Analyze the statistical information and comparisons between the various heuristics.
+-	Statistical Tables: Analyze the statistical information and comparisons between the various heuristics.
 
-●	Make any necessary selections or inputs within the app to customize your experience.
+-	Make any necessary selections or inputs within the app to customize your experience.
 
 Alternatively, you can access the Shiny app directly using the following link:  [Shiny App Demo](https://tsp-heuristics.shinyapps.io/tsp1/)
+
 
 
 Please note that this guide assumes basic familiarity with R and RStudio. If you encounter any issues or have further questions, refer to the documentation for the Shiny package or consult the developer of the Shiny app for assistance.
