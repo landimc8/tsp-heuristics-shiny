@@ -36,14 +36,17 @@ Before proceeding, ensure that you have the following:
 1. R and RStudio installed on your machine
 2. The necessary R packages installed, including Shiny and any additional packages required by the scripts
 
-### Required Packages:
+### Required Packages 📦:
 
 <br>
 
-- Package 1
-- Package 2
-- Package 3
-
+`library(shiny)`
+`library(shinyMatrix)`
+`library(htmltools)`
+`library(dplyr)`
+`library(leaflet)`
+`library(geosphere)`
+`library(shinythemes)
 <br>
 
 Please make sure to install the required packages before running the Shiny app.
@@ -82,7 +85,7 @@ To properly run the Shiny app, execute the scripts in the following order:
 2. Run the TSP.R script and wait for approximately 2 minutes.
 3. The Shiny app will progressively load and display a map, itinerary, and statistical tables for testing and comparing the heuristics used.
 
-# To install the package
+## To install the package 📦
 
 
 ```
@@ -93,7 +96,7 @@ install_github("landimc8/tspHeuris")
 
 <br>
 
-## To load the Package
+## To load the Package 📦
 
 
 ```library(tspHeuris)```
@@ -107,7 +110,7 @@ install_github("landimc8/tspHeuris")
 
 <br>
 
-The Shiny app will progressively load and display a map, itinerary, and statistical tables for testing and comparing the heuristics used.
+A map, itinerary, and statistics tables will be gradually loaded and displayed in the Shiny app for evaluating and contrasting the heuristics employed.
 
 ## Using the Shiny App
 
@@ -118,7 +121,6 @@ The Shiny app will progressively load and display a map, itinerary, and statisti
 
 Please note that this guide assumes basic familiarity with R and RStudio. If you encounter any issues or have further questions, refer to the documentation for the Shiny package or consult the developer of the Shiny app for assistance.
 
-Enjoy using the Shiny app!
 
 <br>
 
@@ -164,4 +166,6 @@ Zildete Landim Crausaz
   <br>
   
 </div>
+
+Enjoy using the Shiny app!
 
