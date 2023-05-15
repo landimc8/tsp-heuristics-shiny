@@ -88,7 +88,7 @@ To properly run the Shiny app, execute the scripts in the following order:
 ```
 library(devtools)
 
-install_github("wajahat16079/ZildePack")
+install_github("landimc8/tspHeuris")
 ```
 
 <br>
@@ -96,7 +96,7 @@ install_github("wajahat16079/ZildePack")
 ## To load the Package
 
 
-```library(Zilde)```
+```library(tspHeuris)```
 
 <br>
 
