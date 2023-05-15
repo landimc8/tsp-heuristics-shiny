@@ -1,4 +1,10 @@
 
+##COMPARAISON D'HEURISTIQUES: AIDE A LA DECISION
+
+
+
+Mat_deflt=matrix(c(0,6,7,3,4,5,6,0,6,7,13,9,7,6,0,10,11,12,3,7,10,0,13,14,4,13,11,13,0,16,5,9,12,14,16,0),nrow=6, ncol=6, byrow = TRUE)
+
 Decision <- function(Mat_distance = Mat_deflt, seed_value=1240) {
   
   Numb=dim(Mat_distance)[1]
@@ -51,5 +57,8 @@ return(list(mn, h, result[[h[1]]]))
   
 }
 
+
+
+Decision(Mat_distance = Mat_deflt, seed_value = 1240)
 
 
