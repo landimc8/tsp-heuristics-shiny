@@ -83,7 +83,7 @@ To properly run the Shiny app, execute the scripts in the following order:
 <br>
 
 1. Once all the scripts have been executed successfully, locate and open the `TSP.R` script.
-2. Run the `TSP.R script and wait for approximately 2 minutes.
+2. Run the `TSP.R` script and wait for approximately 2 minutes.
 3. The Shiny app will progressively load and display a map, itinerary, and statistical tables for testing and comparing the heuristics used.
 
 ## To install the package 📦
