@@ -8,7 +8,7 @@ This study compares the effectiveness of various heuristics for the Travelling S
 
   <a href="https://opensource.org/licenses/MIT">![License](https://img.shields.io/badge/License-MIT-yellow)</a>
   <a href="https://www.r-project.org/about.html">![Language](https://img.shields.io/badge/Language-R-blue)</a>
-  <a href="https://tsp-heuristics.shinyapps.io/tsp-heuristics/">![Demo](https://img.shields.io/badge/App-Demo-indigo)</a>
+  <a href="https://tsp-heuristics.shinyapps.io/tsp1/">![Demo](https://img.shields.io/badge/App-Demo-indigo)</a>
 </div>
 
 <br>
