@@ -142,7 +142,7 @@ library(geosphere)
 
 towns_list = city1
 
-numb <- length(towns_list)
+numb = length(towns_list)
 
 long_lat_cities <- read.csv("~/Documents/GitHub/tsp-heuristics-shiny/worldcities.csv")
 head(long_lat_cities)
@@ -152,7 +152,7 @@ long_lat_cities <- as.matrix(long_lat_cities)
 start <- c(long_lat_cities[, 3][long_lat_cities[, 1]==towns_list[1]], long_lat_cities[, 4][long_lat_cities[, 1]==towns_list[1]]) # Paris
 end <- c(long_lat_cities[, 3][long_lat_cities[, 1]==towns_list[1]], long_lat_cities[, 4][long_lat_cities[, 1]==towns_list[1]]) # Paris
 
-# Cities coordinates
+# Cities Coordinates.
 
 latus = c()
 longus = c()
@@ -164,9 +164,9 @@ for (i in 1:numb) {
   longus[i]=longs[1]
 }
 
-cities <- data.frame(towns_list, latus, longus)
+cities = data.frame(towns_list, latus, longus)
 
-Mat_distance <- matrix(0,numb,numb)
+Mat_distance = matrix(0,numb,numb)
 ptsmat <- t(cities[, c("longus", "latus")])
 
 for (i in 1:numb) {
