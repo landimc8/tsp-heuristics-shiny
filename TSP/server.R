@@ -1,219 +1,88 @@
-# Define server
-server <- function(input, output){
+server <- function(input, output, session) {
   
-  # Initialize map
-  output$map <- renderLeaflet({
-    leaflet() %>%
-      addTiles() %>%
-      setView(lng = 0, lat = 0, zoom = 2)
-  })
+  cities_to_visit <- reactive(input$citychoices)
+  Optimal_journ_1 <- reactive(decision_with_map(cities_to_visit(), seed_value = 1240))
+  map <- reactive(function_cart_graph(datf=Optimal_journ_1()[[2]]))
+  n <- reactive(input$n_t)
+  Optimal_journ_2 <- reactive(Decision(Mat_distance = input$w[1:n(),1:n()], seed_value = 1240))
   
-  # Add marker to map based on user selection
-  observe({
-    leafletProxy("map") %>%
-      clearMarkers()
-    if(!is.null(input$userLocation)){
-      leafletProxy("map")%>%
-        addMarkers(lng = input$userLocation[2], lat = input$userLocation[1],
-                   label = "Your Location")
-      for (loc in input$location){
-        if(loc == "USA"){
-          leafletProxy("map")%>%
-            addMarkers(lng = -95.7129, lat = 37.0902,
-                       label = "1. United States")
-        } else if(loc == "Canada"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -106.3468, lat = 56.1304,
-                       label = "2. Canada")
-        } else if(loc == "Mexico"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -102.5528, lat = 23.6345,
-                       label = "3. Mexico")
-        } else if(loc == "Brazil"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -51.9253, lat = -14.235,
-                       label =  "4. Brazil")
-        } else if(loc == "Argentina"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -63.6167, lat = -38.4161,
-                       label = "5. Argentina")
-        } else if(loc == "UK"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -0.1278, lat = 51.5074,
-                       label =  "6. United Kingdom")
-        } else if(loc == "France"){
-          leafletProxy("map") %>%
-            addMarkers(lng = 2.3522, lat = 48.8566,
-                       label = "7. France")
-        } else if(loc == "Germany"){
-          leafletProxy("map") %>%
-            addMarkers(lng = 10.4515, lat = 51.1657,
-                       label =  "8. Germany")
-        } else if(loc == "Italy"){
-          leafletProxy("map") %>%
-            addMarkers(lng = 12.5674, lat = 41.8719,
-                       label = "9. Italy")
-        } else if(loc == "Spain"){
-          leafletProxy("map") %>%
-            addMarkers(lng = -3.7492, lat = 40.4637,
-                       label =  "10. Spain")
-        } else if(loc == "China"){
-          leafletProxy("map") %>%
-            addMarkers(lng = 104.1954, lat = 35.8617,
-                       label =  "11. China")
-        } else if(loc == "Japan"){
-          leafletProxy("map") %>%
-            addMarkers(lng = 139.6503, lat = 35.6762,
-                       label =  "12. Japan")
-        }
-      }
-    }
-    output$error <- renderPrint({ req(warnings())})
-  })
+  hm <- reactive(as.numeric(input$hm))
+  resrch <- reactive(research(m=hm()[2], h=hm()[1], seed_value=inputsdval, sim_param=input$sparam))
   
   
+  output$Optimal_Journey_1 <- renderPrint(Optimal_journ_1()[[1]])
+  output$min_dist_1 <- renderPrint(Optimal_journ_1()[[3]])
+  output$map_journey <- renderLeaflet(map())
+  
+  output$Optimal_Journey_2 <- renderPrint(Optimal_journ_2()[[3]][[2]])
+  output$min_dist_2 <- renderPrint(Optimal_journ_2()[[3]][[1]])
+  
+  Pval=reactive(resrch()[[9]])
+  resmat=reactive(cbind(resrch()[[1]],p_value=Pval()))
+  
+  Pval_21=reactive(resrch()[[10]])
+  resmat_21=reactive(cbind(resrch()[[2]], p_value_21=Pval_21()))
+  
+  Pval_43=reactive(resrch()[[11]])
+  resmat_43=reactive(cbind(resrch()[[3]], p_value_43=Pval_43()))
+  
+  Pval_41=reactive(resrch()[[12]])
+  resmat_41=reactive(cbind(resrch()[[4]], p_value_41=Pval_41()))
+  
+  Pval_32=reactive(resrch()[[13]])
+  resmat_32=reactive(cbind(resrch()[[5]], p_value_32=Pval_32()))
+  
+  Pval_31=reactive(resrch()[[14]])
+  resmat_31=reactive(cbind(resrch()[[6]], p_value_31=Pval_31()))
+  
+  Pval_42=reactive(resrch()[[15]])
+  resmat_42=reactive(cbind(resrch()[[7]], p_value_42=Pval_42()))
+  
+  Pval_m=reactive(resrch()[[16]])
+  resmat_m=reactive(cbind(resrch()[[8]], p_value_m=Pval_m()))
+  
+  output$perct <- renderTable(resmat(), rownames = TRUE, colnames = TRUE)
+  output$perct21 <- renderTable(resmat_21(), rownames = TRUE, colnames = TRUE)
+  output$perct43 <- renderTable(resmat_43(), rownames = TRUE, colnames = TRUE)
+  output$perct41 <- renderTable(resmat_41(), rownames = TRUE, colnames = TRUE)
+  output$perct32 <- renderTable(resmat_32(), rownames = TRUE, colnames = TRUE)
+  
+  output$inter_parity1_g <- renderText(c(resrch()[[17]]))
+  output$inter_parity2_g <- renderText(c(resrch()[[18]]))
+  
+  output$inter_parity1_21 <- renderText(c(resrch()[[19]]))
+  output$inter_parity2_21 <- renderText(c(resrch()[[20]]))
+  
+  output$inter_parity1_43 <- renderText(c(resrch()[[21]]))
+  output$inter_parity2_43 <- renderText(c(resrch()[[22]]))
+  
+  output$inter_parity1_41 <- renderText(c(resrch()[[23]]))
+  output$inter_parity2_41 <- renderText(c(resrch()[[24]]))
+  
+  output$inter_parity1_32 <- renderText(c(resrch()[[25]]))
+  output$inter_parity2_32 <- renderText(c(resrch()[[26]]))
+  
+  output$inter_myopia1_31 <- renderText(c(resrch()[[27]]))
+  output$inter_myopia2_31 <- renderText(c(resrch()[[28]]))
+  
+  output$inter_myopia1_42 <- renderText(c(resrch()[[29]]))
+  output$inter_myopia2_42 <- renderText(c(resrch()[[30]]))
+  
+  output$inter_myopia1_mg <- renderText(c(resrch()[[31]]))
+  output$inter_myopia2_mg <- renderText(c(resrch()[[32]]))
+  
+  output$inter_parity_1 <- renderText(c(resrch()[[33]]))
+  output$inter_parity_2 <- renderText(c(resrch()[[34]]))
+  output$inter_parity_3 <- renderText(c(resrch()[[38]]))
+  output$inter_myopia_1 <- renderText(c(resrch()[[35]]))
+  output$inter_myopia_2 <- renderText(c(resrch()[[36]]))
+  output$inter_myopia_3 <- renderText(c(resrch()[[37]]))
   
   
-  library(httr)
-  library(opencage)
-  # My API Key  
-  api_key <- "5f7fdf784bd448468b0fac99bf0df5af"
+  output$perctm <- renderTable(resmat_m(), rownames = TRUE, colnames = TRUE)
+  output$perct31 <- renderTable(resmat_31(), rownames = TRUE, colnames = TRUE)
+  output$perct42 <- renderTable(resmat_42(), rownames = TRUE, colnames = TRUE)
+  output$inter_myopia <- renderPrint(interpret)
   
-  # Function to obtain the coordinates of a location using Opencagedata API.
-  get_coordinates <- function(location, api_key) {
-    url <- paste0("https://api.opencagedata.com/geocode/v1/json?q=", location, "&key=", api_key)
-    response <- GET(url)
-    data <- content(response)
-    print(response) # Verify if a valid response is being received from the API
-    print(data) #Verify the structure of the data in the response
-    lat <- data$results[[1]]$geometry$lat
-    lng <- data$results[[1]]$geometry$lng
-    
-    return(c(lat, lng))
-  }
-  
-  # Function to calculate the distance between two points using Haversine's ecuation
-  
-  haversine <- function(lon1, lat1, lon2, lat2) {
-    
-    #convert degrees to radians
-    
-    lon1 <- lon1 * pi / 180
-    lat1 <- lat1 * pi / 180
-    lon2 <- lon2 * pi / 180
-    lat2 <- lat2 * pi / 180
-    
-    #Calculate the differences between the points
-    
-    dlon <- lon2 - lon1
-    dlat <- lat2 - lat1
-    
-    #Calculate de distance using  Harversine's Ecuation
-    
-    a <- sin(dlat / 2)^2 + cos(lat1) * cos(lat2) * sin(dlon / 2)^2
-    c <- 2 * asin(sqrt(a))
-    R <- 6371 # Earth's mean radius in KM
-    d <- R * c
-    
-    return(d)
-    
-  }
-  
-  #Calculate best route when user clicks "Find Best route" Button
-  
-  observeEvent(input$goButto, {
-    
-    # Get user location
-    user_locations <- input$userLocation
-    
-    #Get selected locations
-    locations <- input$location
-    
-    # Get the coordinates of each location
-    coordinates <- lapply(locations, function(x) get_coordinates(x, api_key))
-    print(coordinates) # Verify if the coordinates are being obtained correctly
-    
-    # Add user location to coordinates
-    coordinates <- c(list(user_locations), coordinates)
-    
-    
-    #Calculate the distance matrix between the points
-    
-    n <- length(coordinates)
-    dist_matrix <- matrix(nrow = n, ncol = n)
-    for (i in 1:(n-1)) {
-      for(j in (i+1):n){
-        dist_matrix[i,j]<- haversine(coordinates[[i]][2], coordinates[[i]][1],
-                                     coordinates[[j]][2], coordinates[[j]][1])
-        dist_matrix[j,i] <- dist_matrix[i,j]
-      }
-    }
-    
-    print(dist_matrix) # Check if the distance matrix is being calculated correctly.
-    
-    # Check if the distance matrix contains NaN values
-    
-    if (sum(is.na(dist_matrix)) > 0) {
-      
-      #Find the location of the Nan values in the distance matrix
-      
-      nan_loc <- which(is.na(dist_matrix), arr.ind = TRUE)
-      print(nan_loc)
-      
-    }
-    
-    #Set the values in the main diagonal of the distance matrix to zero
-    diag(dist_matrix) <- 0
-    
-    # Create a network from the distance matrix
-    
-    library(igraph)
-    grapho <- graph_from_adjacency_matrix(dist_matrix, mode =  "undirected", weighted = TRUE)
-    
-    
-    library(TSP)
-    
-    # Create a TSP from the distance matrix
-    tsp <- TSP(dist_matrix)
-    
-    #solve the TSP using the nearest neighbor algorithm
-    tour <- solve_TSP(tsp, metho = "nearest_insertion")
-    
-    #Get the coordinates of the points in the tour
-    lngs <- sapply(tour, function(i) coordinates[[i]][2])
-    lats <- sapply(tour, function(i) coordinates[[i]][1])
-    
-    
-    #Add the coordinates of the first point to the end of the vectors
-    lngs <- c(lngs, lngs[1])
-    lats <- c(lats, lats[1])
-    
-    # Draw the tour on the map
-    leafletProxy("map") %>%
-      addPolylines(lng = lngs,
-                   lat = lats,
-                   color = "red")
-    
-    #Show messages
-    output$route <- renderText({
-      req(tour)
-      paste("The shorter route is : ", paste(c("Yours Location", locations)[tour], collapse = "  =>  "))
-    })
-    
-    
-    
-    #Add markers to the start and the end of points
-    leafletProxy("map") %>%
-      addCircleMarkers(lng = coordinates[[tour[1]]][2], lat = coordinates[[tour[1]]][1],
-                       label = paste("Start:", locations[tour[1]])) %>%
-      addCircleMarkers(lng = coordinates[[tour[length(tour)]]][2], lat =
-                         coordinates[[tour[length(tour)]]][1],
-                       label = paste("End:", locations[tour[length(tour)]]))
-    
-    
-    
-    
-  })
 }
-
 
