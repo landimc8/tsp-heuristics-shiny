@@ -1,6 +1,6 @@
 <h1 align="center">Travelling Salesman Problem (TSP) - Heuristics Comparison Project ✈️🧳🧭🗺️</h1>
 
-This study compares the effectiveness of various heuristics for the Travelling Salesman Problem solution. (TSP). The greedy heuristic is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
+This study compares the effectiveness of various heuristics for the Travelling Salesman Problem solution. (TSP). The Algorithme glouton is the primary emphasis, and we introduce new iterations of this algorithm to see if they can enhance its performance.
 
 <br>
 
