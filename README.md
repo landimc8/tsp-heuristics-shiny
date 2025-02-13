@@ -133,27 +133,27 @@ Please note that this guide assumes basic familiarity with R and RStudio. If you
 <br>
 
 <h1 align="center">Background 🌇</h1>
-The Traveling Salesman Problem (TSP) involves finding the shortest path that visits each of the given points exactly once. It is a relevant problem in various fields such as logistics, transit, circuit design, and DNA sequencing. Due to the high computational complexity of finding exact solutions, heuristic algorithms are often employed. One such heuristic is the greedy approach, which constructs a solution incrementally by choosing the option that optimizes the objective function at each step. For example, the nearest neighbor algorithm selects the unvisited city closest to the current location as the next step. However, this algorithm may suffer from myopia and get stuck in suboptimal solutions.
+The Traveling Salesman Problem (TSP) involves finding the shortest path that visits each of the given points exactly once. It is a relevant problem in various fields such as logistics, transit, circuit design, and DNA sequencing. Due to the high computational complexity of finding exact solutions, heuristic algorithms are often employed. One such heuristic is the glouton approach, which constructs a solution incrementally by choosing the option that optimizes the objective function at each step. For example, the nearest neighbor algorithm selects the unvisited city closest to the current location as the next step. However, this algorithm may suffer from myopia and get stuck in suboptimal solutions.
 
 <br>
 
 <h1 align="center">Objective 🔭</h1>
-In this project, we propose exploring updated versions of the greedy heuristic to reduce its myopia. These variations, known as class c greedy heuristics for TSP, redefine the objective function to consider a certain number of subsequent locations. We will implement class 1 (nearest neighbor algorithm), as well as the new class 2, 3, and 4 heuristics. Our main objective is to examine the hypotheses that:
+In this project, we propose exploring updated versions of the glouton heuristic to reduce its myopia. These variations, known as class c glouton heuristics for TSP, redefine the objective function to consider a certain number of subsequent locations. We will implement class 1 (nearest neighbor algorithm), as well as the new class 2, 3, and 4 heuristics. Our main objective is to examine the hypotheses that:
 
 <br>
 <br>
 
-- The greedy heuristics of even classes are comparatively more effective than those of odd classes for an even number of towns, according to hypothesis 1.
-- The greedy heuristics of odd classes are comparatively more effective than those of even classes for an odd number of cities.
+- The glouton heuristics of even classes are comparatively more effective than those of odd classes for an even number of towns, according to hypothesis 1.
+- The glouton heuristics of odd classes are comparatively more effective than those of even classes for an odd number of cities.
 
 <h1 align="center">Implementation ✍🏼</h1>
-To evaluate different heuristics for a smaller set of cities, we implemented the class 1 greedy heuristic using the R programming language. The results are shown in the tables mentioned earlier. Next, we will proceed to implement the class 2, 3, and class 4 greedy algorithms and create a package. This process will further enhance our knowledge and proficiency in the R programming language.
+To evaluate different heuristics for a smaller set of cities, we implemented the class 1 glouton heuristic using the R programming language. The results are shown in the tables mentioned earlier. Next, we will proceed to implement the class 2, 3, and class 4 glouton algorithms and create a package. This process will further enhance our knowledge and proficiency in the R programming language.
 
 <h1 align="center">Results 📰</h1>
 Based on empirical findings to date, it has been observed that an even class heuristic provides the best solution for over 80% of the sample's even occurrences, while an odd class heuristic achieves this for more than 60% of the sample's odd occurrences. We hypothesize that these ratios will increase as the magnitude of the TSP instances increases.
 
 <h1 align="center">Conclusions ✋🏼</h1>
-Implementing the class c greedy strategies for TSP and evaluating their performance can enhance our understanding of the advantages and disadvantages of these algorithms. The findings obtained from such evaluations can serve as a valuable guide when selecting the most suitable heuristic for a given TSP problem, considering factors such as problem size and structure. This empirical analysis will contribute to making informed decisions regarding heuristic selection in TSP problem-solving scenarios.
+Implementing the class c glouton strategies for TSP and evaluating their performance can enhance our understanding of the advantages and disadvantages of these algorithms. The findings obtained from such evaluations can serve as a valuable guide when selecting the most suitable heuristic for a given TSP problem, considering factors such as problem size and structure. This empirical analysis will contribute to making informed decisions regarding heuristic selection in TSP problem-solving scenarios.
 
 
 <br>
